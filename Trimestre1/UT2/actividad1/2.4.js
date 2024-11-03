@@ -6,6 +6,6 @@ function mostrarVida(){
     edad=prompt("Introduce tu edad: ");
 
     let vida=edad*365;
-
-    document.write(`Nombre: ${nombre} , dias vividos: ${vida}`);
+    const p=document.getElementById("4");
+    p.textContent=`Nombre: ${nombre} , dias vividos: ${vida}`;
 }

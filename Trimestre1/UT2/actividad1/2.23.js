@@ -9,5 +9,5 @@ function ej2_23(){
             pares++;
         }
     }
-    document.write("Hay " + pares + " pares");
+    document.getElementById("23").innerHTML="Hay " + pares + " pares";
 }

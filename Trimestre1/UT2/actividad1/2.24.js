@@ -5,5 +5,5 @@ function ej2_24(){
 
     //Imprimir el resultado. 0-January, 1-February, etc.
     
-    document.write(`El mes ${mes} tiene ${diasMes} días.`);
+    document.getElementById("24").innerHTML=`El mes ${mes} tiene ${diasMes} días.`;
 }

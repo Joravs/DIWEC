@@ -2,13 +2,14 @@ function ej2_20() {
 let opcion;
 let numero;
 let suma = 0;
-    document.write("1. Salir<br>");
-    document.write("2. Sumatorio<br>");
-    document.write("3. Factorial<br>");
+const p=document.getElementById("20");
+    p.innerHTML="1. Salir<br>";
+    p.innerHTML="2. Sumatorio<br>";
+    p.innerHTML="3. Factorial<br>";
 
     opcion = parseInt(prompt("Introduce una opción:"));
 
-    while (opcion == 1){
+    while (opcion != 1){
         switch (opcion) {
             case 1:
                 alert("Saliendo...<br>");
@@ -18,7 +19,7 @@ let suma = 0;
                 for (let i = 1; i <= numero; i++) {
                     suma += i;
                 }
-                document.write("El sumatorio de los números desde 1 hasta " + numero + " es: " + suma + "<br>");
+                p.innerHTML+="El sumatorio de los números desde 1 hasta " + numero + " es: " + suma + "<br>";
                 suma = 0;
                 break;
             case 3:
@@ -27,8 +28,9 @@ let suma = 0;
                 for (let i = 2; i <= numero; i++) {
                     factorial *= i;
                 }
-                document.write("El factorial de " + numero + " es: " + factorial + "<br>");
+                p.innerHTML+="El factorial de " + numero + " es: " + factorial + "<br>";
                 break;
         }
+        opcion = parseInt(prompt("Introduce una opción:"));
     }
 }

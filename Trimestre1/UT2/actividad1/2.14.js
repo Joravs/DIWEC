@@ -7,7 +7,7 @@ function ej2_14(){
 
     while (salida==true && cont<5){
         if (adivinar==num){
-            document.write("Acertaste");
+            alert("Acertaste");
             salida=false;
         }else{
             adivinar=prompt("Prueba suerte otra vez");

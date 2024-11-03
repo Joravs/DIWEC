@@ -6,6 +6,7 @@ function mostrarInformacion(){
     nombre=window.prompt("Nombre: ");
     apellido=window.prompt("Apellido: ");
     poblacion=window.prompt("Poblacion: ");
-
-    document.write(`Hola ${nombre} ${apellido},<br>Adios habitante de ${poblacion}`);
+    
+    const p=document.getElementById("8");
+    p.textContent=`Hola ${nombre} ${apellido},<br>Adios habitante de ${poblacion}`;
 }

@@ -1,3 +1,4 @@
 function holaMundo(){
-    document.write("Hola mundo JS 2");
+    const p=document.getElementById("2");
+    p.textContent="Hola mundo JS 2";
 }

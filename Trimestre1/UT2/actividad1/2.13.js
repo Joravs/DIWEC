@@ -3,6 +3,6 @@ function ej2_13(){
     let iva = prompt("Introduce IVA: ");
 
     let preciototal = (precio*iva);
-
-    document.write(`Precio total a pagar es: ${preciototal}`);
+    const p=document.getElementById("13");
+    p.innerHTML=`Precio total a pagar es: ${preciototal}`;
 }

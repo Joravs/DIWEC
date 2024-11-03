@@ -3,6 +3,6 @@ function ej2_29(){
     let save=0;
     for (let i = 1; i <= num;i++){
         save+=i;
-        document.write(save+" ");
+        document.getElementById("29").innerHTML+=save+" ";
     }  
 }

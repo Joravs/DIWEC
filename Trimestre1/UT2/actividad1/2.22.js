@@ -3,6 +3,7 @@ function ej2_22(){
     let num=0;
     let sw=true;
     let cont=0;
+     const p=document.getElementById("22");
     while(sw){
         num = prompt("Introduce un numero|Si quieres salir introduce una letra");
 
@@ -13,8 +14,8 @@ function ej2_22(){
             cont++;
         }
     }
-    document.write("<br>La suma de los numeros introducidos es: "+suma);
-    document.write("<br>El numero de numeros introducidos es: "+cont);
+    p.innerHTML+="<br>La suma de los numeros introducidos es: "+suma;
+    p.innerHTML+="<br>El numero de numeros introducidos es: "+cont;
     let promedio=suma/cont;
-    document.write("<br>El promedio es: "+promedio);
+    p.innerHTML+="<br>El promedio es: "+promedio;
 }

@@ -2,11 +2,13 @@ function ej2_30(){
     let death=0;
     let herido=0;
     let secret=numeros4("secret");
+    const p=document.getElementById("30");
+
     for (i=0; i<8; i++){
         let adivina=numeros4("adivina"+i);
-        document.write("Tu numero es: ");
-        for (num in adivina){document.write(adivina[num]+" ");}
-        document.write("<br>Intento "+(i+1)+"<br>");
+        p.innerHTML+="Tu numero es: ";
+        for (num in adivina){p.innerHTML+=adivina[num]+" "}
+        p.innerHTML+="<br>Intento "+(i+1)+"<br>";
         alert("Intento "+(i+1));
         for (j=0; j<4;j++) {
             for (k=0; k<4; k++) {
@@ -24,7 +26,7 @@ function ej2_30(){
                 i=8;
             }
         }
-        document.write("H: "+herido+" M: "+death+"<br>");
+        p.innerHTML+="H: "+herido+" M: "+death+"<br>";
         alert("H: "+herido+" M: "+death);
     }
 }

@@ -3,5 +3,6 @@ function llamarSaludo(){
     let segundo_saludo=primer_saludo;
     primer_saludo="hello";
 
-    document.write(segundo_saludo);
+    const p=document.getElementById("9");
+    p.textContent=segundo_saludo;
 }

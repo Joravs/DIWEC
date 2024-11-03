@@ -4,5 +4,5 @@ function ej2_25(){
 
     if(ran==0) apuesta=apuesta*2
     else apuesta=0
-    document.write("Tu apuesta es: " + apuesta);
+    document.getElementById("25").innerHTML="Tu apuesta es: " + apuesta;
 }   
