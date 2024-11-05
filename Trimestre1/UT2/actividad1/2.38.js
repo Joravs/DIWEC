@@ -1,9 +1,10 @@
 function ej2_38(){
     const p=document.getElementById("38");
-
-    for (let i=1;i<=25;i++){
+    let cont=0;
+    for (let i=1;i<=25;i+=3){
+        cont++;
         p.innerHTML+=i+" ";
-        if(i%4==0){
+        if(cont%4==0){
             p.innerHTML+="<br>";
         }
     }
