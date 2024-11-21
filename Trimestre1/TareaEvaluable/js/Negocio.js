@@ -1,4 +1,4 @@
-import {Piezas} from './piezas.js';
+import Piezas from './piezas.js';
 
 const GetDatPiezas=localStorage.getItem('datosPiezas');
 let Listpiezas=GetDatPiezas?JSON.parse(GetDatPiezas):[];
