@@ -35,6 +35,8 @@ table{
     width: 80%;
     height: 50%;
     overflow: auto;
+    border-left:2px solid #ccc;
+    border-right:2px solid #ccc;
 }
 th{
     border: 0px;
