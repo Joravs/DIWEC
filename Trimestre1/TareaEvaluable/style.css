@@ -1,8 +1,52 @@
-table{
-    border-collapse: collapse;
+body{
+    grid-template-areas: "header" "botones" "tabla";
+    background-color: #eee;
 }
-th,td{
+.header{
+    grid-area: header;
+    text-align: center;
+}
+.botones{
+    grid-area: botones;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+button{
+    background-color: #fff;
+    border: 0px;
+}
+.tabla:before{
+    content: "";
+    display: block;
+    margin:0px;
+    height: 2px;
+    width: 100%;
+    background-color: #ccc;
+}
+.tabla{
+    margin-top:20px;
+    grid-area: tabla;
+    display: flexbox;
+}
+table{
+    margin: auto;
+    border-collapse: collapse;
+    width: 80%;
+    height: 50%;
+    overflow: auto;
+}
+th{
+    border: 0px;
+    border-bottom: 2px solid #ccc;
+    position: sticky;
+}
+td{
     border: 2px solid #ccc;
+}
+.modal{
+    background-color: rgba(255, 255, 255, 0.596);
+    border: 0px;
 }
 .modal input{
     display: block;

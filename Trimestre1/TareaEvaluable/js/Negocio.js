@@ -1,54 +1,55 @@
-class Piezas{
-    constructor(numpiezas,largo,ancho,grosor,color,ambascaras,cortada){
-        this.numpiezas=Number(numpiezas>0?numpiezas:this.numpiezas);
-        this.largo=largo>0?largo:this.largo;
-        this.ancho=ancho>0?ancho:this.ancho;
-        this.grosor=grosor>0?grosor:this.grosor;
-        this.color=color?color:this.color;
-        this.ambascaras=Boolean(ambascaras);
-        this.cortada=Boolean(cortada);
-    }
-    StringPiezas(){
-        return `Número de piezas: ${this.numpiezas}, Largo: ${this.largo} cm, Ancho: ${this.ancho} cm, Grosor: ${this.grosor} cm, Color: ${this.color}, Ambascaras: ${this.ambascaras}, Cortada: ${this.cortada}`;
-    }
-}
-class Pedidos{
-    constructor(numpedido,nombre,apellido,procesado,servido){
-        this.numpedido=Number(numpedido>0? numpedido:this.numpedido);
-        this.cliente=new Cliente(nombre?nombre:this.nombre,apellido?apellido:this.apellido);
-        this.fechapedido=new Date();
-        this.procesado=Boolean(procesado);
-        this.servido=Boolean(servido);
-    }
-}
-class Cliente{
-    constructor(nombre,apellido){
-        this.nombre=nombre?nombre:this.nombre;
-        this.apellido=apellido?apellido:this.apellido;
-    }
-}
+import {Piezas} from './piezas.js';
 
-let Listpiezas=[];
 const GetDatPiezas=localStorage.getItem('datosPiezas');
-const table=document.getElementById('tbl');
-const tr=document.createElement('tr');
-const td=document.createElement('td');
+let Listpiezas=GetDatPiezas?JSON.parse(GetDatPiezas):[];
 
-function detalles(){
-    console.log(GetDatPiezas);
+function detallesPiezas(){
+    const table=document.getElementById('tbl');
+    Listpiezas.forEach(el => {
+        superficie=el.getLargo*el.getAncho;
+        volumen=el.getLargo*el.getAncho*el.getGrosor;
+        table.appendChild(document.createElement('tr'));
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=el.getNumpieza;
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=el.getLargo;
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=el.getAncho;
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=el.getGrosor;
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=el.getColor;
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=superficie;
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=volumen;
+    });
 }
 
-function darAlta(){
-    piz=new Piezas(
-        document.getElementById('numpieza').value,
-        document.getElementById('largo').value,
-        document.getElementById('ancho').value,
-        document.getElementById('grosor').value,
-        document.getElementById('color').value,
-        document.getElementById('ambascaras').value,
-        document.getElementById('cortada').value
-    );
-    Listpiezas.push(piz);
+function darAltaPiezas(){
+    if(Listpiezas.find((el)=>el.numpieza==document.getElementById('numpieza').value)){
+        alert('El número de pieza ya existe');
+        return;
+    }else{
+        piz=new Piezas(
+            document.getElementById('numpiezaalta').value,
+            document.getElementById('largo').value,
+            document.getElementById('ancho').value,
+            document.getElementById('grosor').value,
+            document.getElementById('color').value,
+            document.getElementById('ambascaras').value,
+            document.getElementById('cortada').value
+        );
+        Listpiezas.push(piz);
+        const SetDatPiezas=localStorage.setItem('datosPiezas',JSON.stringify(Listpiezas));
+        window.alta.close();
+    }
+}
+
+function darBajaPiezas(){
+    if(Listpiezas.find((el)=> el.numpieza==document.getElementById('numpiezabaja').value)){
+        Listpiezas.splice(Listpiezas.indexOf(document.getElementById('numpiezabaja').value),1);
+    }else{
+        alert('El número de pieza no existe');
+        return;
+    }
     const SetDatPiezas=localStorage.setItem('datosPiezas',JSON.stringify(Listpiezas));
-    window.alta.close();
+    window.baja.close();
+}
+
+function eliminarDatosPiezas(){
+    localStorage.clear();
 }
