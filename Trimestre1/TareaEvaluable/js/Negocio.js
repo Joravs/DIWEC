@@ -3,6 +3,9 @@ import Piezas from './piezas.js';
 const GetDatPiezas=localStorage.getItem('datosPiezas');
 let Listpiezas=GetDatPiezas?JSON.parse(GetDatPiezas):[];
 
+const GetDatPedidos=localStorage.getItem('datosPedidos');
+let Listpedidos=GetDatPedidos?JSON.parse(GetDatPedidos):[];
+
 function detallesPiezas(){
     const table=document.getElementById('tbl');
     Listpiezas.forEach(el => {
@@ -52,4 +55,49 @@ function darBajaPiezas(){
 
 function eliminarDatosPiezas(){
     localStorage.clear();
+}
+
+function detallesPedidos(){
+    const table=document.getElementById('tbl');
+    Listpedidos.forEach(el => {
+        table.appendChild(document.createElement('tr'));
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=el.getNumpieza;
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=el.getLargo;
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=el.getAncho;
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=el.getGrosor;
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=el.getColor;
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=superficie;
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=volumen;
+    });
+}
+
+function darAltaPedidos(){
+    if(Listpedidos.find((el)=>el.numpedido==document.getElementById('numpieza').value)){
+        alert('El número de pedido ya existe');
+        return;
+    }else{
+        piz=new Piezas(
+            document.getElementById('numpiezaalta').value,
+            document.getElementById('largo').value,
+            document.getElementById('ancho').value,
+            document.getElementById('grosor').value,
+            document.getElementById('color').value,
+            document.getElementById('ambascaras').value,
+            document.getElementById('cortada').value
+        );
+        Listpedidos.push(piz);
+        const SetDatPiezas=localStorage.setItem('datosPiezas',JSON.stringify(Listpedidos));
+        window.alta.close();
+    }
+}
+
+function darBajaPedidos(){
+    if(Listpedidos.find((el)=> el.numpedido==document.getElementById('numpedidobaja').value)){
+        Listpedidos.splice(Listpedidos.indexOf(document.getElementById('numpedidobaja').value),1);
+    }else{
+        alert('El número de pedido no existe');
+        return;
+    }
+    const SetDatPedidoss=localStorage.setItem('datosPedidos',JSON.stringify(ListedidosListpedidoss));
+    window.baja.close();
 }
