@@ -1,0 +1,16 @@
+table{
+    border-collapse: collapse;
+}
+th,td{
+    border: 2px solid #ccc;
+}
+.modal input{
+    display: block;
+    margin: 5px;
+}
+.modal p{
+    display: inline;
+}
+.modal button{
+    display: block;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaderAviles</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="../js/Negocio.js"></script>
+</head>
+<body>
+    <h1>MaderAviles</h1>
+    <div class="botones">
+        <button type="button" onclick="window.alta.showModal()">Alta</button>
+        <button type="button" onclick="darBaja()">Baja</button>
+        <button type="button" onclick="modificar()">Modificar</button>
+    </div>
+    <div class="tabla">
+        <table id="tbl">
+            <tr>
+                <th>Num. Pieza</th>
+                <th>Largo</th>
+                <th>Ancho</th>
+                <th>Grosor</th>
+                <th>Color</th>
+                <th>Superficie</th>
+                <th>Volumen</th>
+            </tr>
+            <script>detalles()</script>
+        </table>
+    </div>
+    <dialog class="modal" id="alta">
+        <input type="text" name="numpieza" id="numpieza" placeholder="numpieza">
+        <input type="text" name="largo" id="largo" placeholder="largo">
+        <input type="text" name="ancho" id="ancho" placeholder="ancho">
+        <input type="text" name="grosor" id="grosor" placeholder="grosor">
+        <input type="text" name="color" id="color" placeholder="color">
+        <p>¿Ambas Caras?</p>
+        <select name="ambascaras" id="ambascaras">
+            <option value="si">Si</option>
+            <option value="no">No</option>
+        </select>
+        <br>
+        <p>¿Cortada?</p>
+        <select name="cortada" id="cortada">
+            <option value="si">Si</option>
+            <option value="no">No</option>
+        </select>
+        <button type="button" onclick="darAlta()">Dar de Alta</button>
+    </dialog>
+</body>
+</html>
