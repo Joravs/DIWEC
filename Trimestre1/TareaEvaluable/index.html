@@ -7,17 +7,61 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>MaderAviles</h1>
-    <nav>
-        <div>
-            <a href="portfolio/piezas.html">Piezas</a>
+    <div class="containerindex">
+        <div class="header">
+            <h1>MaderAviles</h1>
         </div>
-        <div>
-            <a href="portfolio/pedidos.html">Pedidos</a>
+        <div class="content">
+            <nav>
+                <div class="piezas">
+                    <h2><a href="portfolio/piezas.html">Piezas</a></h2>
+                    <div class="botones">
+                        <button type="button" onclick="window.alta.showModal()">Alta</button>
+                        <button type="button" onclick="window.baja.showModal()">Baja</button>
+                        <button type="button" onclick="window.modificar.showModal()">Modificar</button>
+                        <button type="button" onclick="eliminarDatosPiezas()">Clear</button>
+                    </div>
+                </div>
+                <div class="pedidos">
+                    <h2><a href="portfolio/pedidos.html">Pedidos</a></h2>
+                    <div class="botones">
+                        <button type="button" onclick="window.alta.showModal()">Alta</button>
+                        <button type="button" onclick="window.baja.showModal()">Baja</button>
+                        <button type="button" onclick="window.modificar.showModal()">Modificar</button>
+                        <button type="button" onclick="eliminarDatosPiezas()">Clear</button>
+                    </div>
+                </div>
+                <div class="detalles">
+                    <h2><a href="portfolio/detalles">Detalles del pedido</a></h2>
+                </div>
+            </nav>
+            <dialog class="modal" id="alta">
+                <input type="text" name="numpieza" id="numpiezaalta" placeholder="numpieza" autocomplete="off">
+                <input type="text" name="largo" id="largo" placeholder="largo" autocomplete="off">
+                <input type="text" name="ancho" id="ancho" placeholder="ancho" autocomplete="off">
+                <input type="text" name="grosor" id="grosor" placeholder="grosor" autocomplete="off">
+                <input type="text" name="color" id="color" placeholder="color" autocomplete="off">
+                <p>¿Ambas Caras?</p>
+                <select name="ambascaras" id="ambascaras">
+                    <option value="si">Si</option>
+                    <option value="no">No</option>
+                </select>
+                <br>
+                <p>¿Cortada?</p>
+                <select name="cortada" id="cortada">
+                    <option value="si">Si</option>
+                    <option value="no">No</option>
+                </select>
+                <button type="button" onclick="darAltaPedidos()">Dar de Alta</button>
+            </dialog>
+            <dialog class="modal" id="baja">
+                <input type="text" name="numpieza" id="numpiezabaja" placeholder="numpieza" autocomplete="off">
+                <button type="button" onclick="darBajaPedidos()">Dar de Baja</button>
+            </dialog>
+            <dialog class="modal" id="modificar">
+        
+            </dialog>
         </div>
-        <div>
-            <a href="portfolio/detalles">Detalles del pedido</a>
-        </div>
-    </nav>
+    </div>
 </body>
 </html>
