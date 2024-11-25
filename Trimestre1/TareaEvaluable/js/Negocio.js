@@ -75,6 +75,23 @@ function darBajaPedido(){
 function modificarPedido(){
     
 }
+
+function detallesPedidos(){
+    let table=document.getElementById('tbl');
+    Listpiezas.forEach((el) => {
+        let superficie=el.largo*el.ancho;
+        let volumen=el.largo*el.ancho*el.grosor;
+        table.appendChild(document.createElement('tr'));
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=el.numpiezas;
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=el.numpedido;
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=el.largo;
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=el.ancho;
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=el.grosor;
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=el.color;
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=superficie;
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=volumen;
+    });
+}
 const cargaEventos = () => {
     document.getElementById('darAltaPedido').addEventListener('click', darAltaPedido);
     document.getElementById('darAltaPieza').addEventListener('click', darAltaPieza);
@@ -85,3 +102,4 @@ const cargaEventos = () => {
 }
 
 window.cargaEventos = cargaEventos;
+window.detallesPedidos = detallesPedidos;
