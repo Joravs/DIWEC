@@ -1,13 +1,14 @@
-export class Pedidos{
+import Cliente from './cliente.js';
+export default class Pedidos{
     constructor(numpedido,nombre,apellido,procesado,servido){
-        this.numpedido=Number(numpedido>0? numpedido:this.numpedido);
+        this.numpedido=parseInt(numpedido>0? numpedido:this.numpedido);
         this.cliente=new Cliente(nombre?nombre:this.nombre,apellido?apellido:this.apellido);
         this.fechapedido=new Date();
         this.procesado=Boolean(procesado);
         this.servido=Boolean(servido);
     }
     setNumpedido(numpedido){
-        this.numpedido=Number(numpedido>0? numpedido:this.numpedido);
+        this.numpedido=parseInt(numpedido>0? numpedido:this.numpedido);
     }
     setCliente(nombre,apellido){
         this.cliente.setNombre(nombre);

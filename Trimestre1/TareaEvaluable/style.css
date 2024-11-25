@@ -43,20 +43,6 @@
     td{
         border: 2px solid #ccc;
     }
-    .modal{
-        background-color: rgba(255, 255, 255, 0.596);
-        border: 0px;
-    }
-    .modal input{
-        display: block;
-        margin: 5px;
-    }
-    .modal p{
-        display: inline;
-    }
-    .modal button{
-        display: block;
-    }
 }
 .containerindex{
     grid-template-areas: "header" "content";
@@ -119,5 +105,23 @@
         height: 2px;
         width: 100%;
         background-color: #bbb;
+    }
+    .modal{
+        margin: auto;
+        padding: 20px;
+        width: autofit;
+        height: autofit;
+        background-color: rgba(255, 255, 255, 0.596);
+        border: 0px;
+    }
+    .modal input{
+        display: block;
+        margin: 5px;
+    }
+    .modal p{
+        display: inline;
+    }
+    .modal button{
+        display: block;
     }
 }
