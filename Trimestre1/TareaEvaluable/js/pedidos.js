@@ -1,12 +1,25 @@
 import Cliente from './cliente.js';
-export default class Pedidos{
-    constructor(numpedido,nombre,apellido,procesado,servido){
+export default class Pedido{
+    constructor(numpedido,nombre,apellido,procesado,servido,fecha){
         this.numpedido=parseInt(numpedido>0? numpedido:this.numpedido);
         this.cliente=new Cliente(nombre?nombre:this.nombre,apellido?apellido:this.apellido);
-        this.fechapedido=new Date();
+        this.fechapedido=this.validarFecha(fecha);
         this.procesado=Boolean(procesado);
         this.servido=Boolean(servido);
     }
+    validarFecha(fecha) {
+        let Fnow=new Date(Date.now());
+        let Frec=new Date(Date.parse(fecha));
+        let fech="";
+        if (Frec>=Fnow){
+            fech=Fnow.getFullYear()+"-"+Fnow.getMonth()+"-"+Fnow.getDay();
+            return fech;
+        }else{
+            fech=Frec.getFullYear()+"-"+Frec.getMonth()+"-"+Frec.getDay();
+            return fech;
+        }
+    }
+
     setNumpedido(numpedido){
         this.numpedido=parseInt(numpedido>0? numpedido:this.numpedido);
     }

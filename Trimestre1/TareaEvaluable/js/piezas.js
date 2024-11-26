@@ -1,4 +1,4 @@
-export default class Piezas{
+export default class Pieza{
     constructor(numpiezas,numpedido,largo,ancho,grosor,color,ambascaras,cortada){
         this.numpiezas=parseInt(numpiezas>0?numpiezas:this.numpiezas);
         this.numpedido=parseInt(numpedido>0?numpedido:this.numpiezas);

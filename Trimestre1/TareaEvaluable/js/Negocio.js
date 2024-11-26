@@ -1,5 +1,5 @@
-import Pedidos from './pedidos.js';
-import Piezas from './piezas.js';
+import Pedido from './pedidos.js';
+import Pieza from './piezas.js';
 
 const GetDatPiezas=localStorage.getItem('datosPiezas');
 let Listpiezas=GetDatPiezas?JSON.parse(GetDatPiezas):[];
@@ -14,7 +14,7 @@ function darAltaPieza(){
         alert('El número de pieza ya existe');
         return;
     }else{
-        let piz=new Piezas(
+        let piz=new Pieza(
             document.getElementById('numpiezaalta').value,
             document.getElementById('numpedidoPieza').value,
             document.getElementById('largo').value,
@@ -41,6 +41,10 @@ function darBajaPieza(){
     window.bajaPieza.close();
 }
 
+function modificarPieza(){
+    
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function darAltaPedido(){
@@ -48,12 +52,13 @@ function darAltaPedido(){
         alert('El número de pedido ya existe');
         return;
     }else{
-        let ped=new Pedidos(
+        let ped=new Pedido(
             document.getElementById('numpedidoalta').value,
             document.getElementById('nombreclientealta').value,
             document.getElementById('apellidoclientealta').value,
             document.getElementById('procesadoalta').value,
-            document.getElementById('servidoalta').value
+            document.getElementById('servidoalta').value,
+            document.getElementById('fechaalta').value
         );
         Listpedidos.push(ped);
         const SetDatPedidos=localStorage.setItem('datosPedidos',JSON.stringify(Listpedidos));
@@ -73,9 +78,32 @@ function darBajaPedido(){
 }
 
 function modificarPedido(){
-    
+    let index=Listpedidos.indexOf(document.getElementById('numpedidomod').value);
+    if(Listpedidos.find((el)=> el.numpedido==document.getElementById('numpedidomod').value)){
+        let ped=new Pedido(
+            document.getElementById('numpedidomod').value,
+            document.getElementById('nombreclientemod').value?document.getElementById('nombreclientemod').value:Listpedidos[index].cliente.nombre,
+            document.getElementById('apellidoclientemod').value?document.getElementById('apellidoclientemod').value:Listpedidos[index].cliente.apellido,
+            document.getElementById('procesadomod').value?document.getElementById('procesadomod').value:Listpedidos[index].procesado,
+            document.getElementById('servidomod').value?document.getElementById('servidomod'):Listpedidos[index].servido,
+            Date.now()
+        );
+        Listpedidos.push(ped);
+        const SetDatPedidos=localStorage.setItem('datosPedidos',JSON.stringify(Listpedidos));
+        window.modificarPedido.close();
+    }else{
+        alert('El número de pedido no existe');
+        return;
+    }
+}
+function modPedForm(){
+    let dialMod=document.getElementById('formmodped');
+    Listpedidos.forEach((el)=>{
+        dialMod.children[1].appendChild(document.createElement('option')).innerHTML=el.numpedido;
+    });
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function detallesPedidos(){
     let table=document.getElementById('tbl');
     Listpiezas.forEach((el) => {
@@ -92,14 +120,33 @@ function detallesPedidos(){
         table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=volumen;
     });
 }
-const cargaEventos = () => {
+function datosPedidos(){
+    let table=document.getElementById('tbl');
+    Listpedidos.forEach((el) => {
+        table.appendChild(document.createElement('tr'));
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=el.numpedido;
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=el.cliente.nombre;
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=el.cliente.apellido;
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=el.procesado==true?"Si":"No";
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=el.servido==true?"Si":"No";
+        table.children[table.children.length-1].appendChild(document.createElement('td')).innerHTML=el.fechapedido;
+    });
+}
+const cargaEventosPedidos = () => {
     document.getElementById('darAltaPedido').addEventListener('click', darAltaPedido);
-    document.getElementById('darAltaPieza').addEventListener('click', darAltaPieza);
     document.getElementById('darBajaPedido').addEventListener('click', darBajaPedido);
-    document.getElementById('darBajaPieza').addEventListener('click', darBajaPedido);
-    document.getElementById('modificarPedido').addEventListener('click', modificarPedido);
-    document.getElementById('modificarPieza').addEventListener('click', modificarPieza);
+    document.getElementById('modPedido').addEventListener('click', modificarPedido);
+    
+    document.getElementById('btnmodPed').addEventListener('click', modPedForm);
+}
+const cargaEventosPiezas =()=>{
+    document.getElementById('darAltaPieza').addEventListener('click', darAltaPieza);
+    document.getElementById('darBajaPieza').addEventListener('click', darBajaPieza);
+    document.getElementById('modPieza').addEventListener('click', modificarPieza);
+
 }
 
-window.cargaEventos = cargaEventos;
+window.cargaEventosPedidos = cargaEventosPedidos;
+window.cargaEventosPiezas = cargaEventosPiezas;
 window.detallesPedidos = detallesPedidos;
+window.datosPedidos= datosPedidos;
