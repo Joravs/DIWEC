@@ -16,18 +16,19 @@
         <div class="piezas">
             <h2>Piezas</h2>
             <div class="botones">
-                <button type="button" onclick="window.altaPieza.showModal()">Alta</button>
+                <button type="button" onclick="window.altaPieza.showModal()" id="btnaltapiz">Alta</button>
                 <button type="button" onclick="window.bajaPieza.showModal()">Baja</button>
                 <button type="button" onclick="window.modificarPieza.showModal()">Modificar</button>
                 <button type="button" onclick="eliminarDatosPiezas()">Clear</button>
             </div>
             <dialog class="modal" id="altaPieza">
-                <form autocomplete="off">
-                    <legend>Alta de Pieza</legend>
+                <legend>Alta de Pieza</legend>
+                <form autocomplete="off" id="formaltpiz">
+                    <label for="numpedidoPieza">Numero de Pedido:</label>
+                    <select name="numpedidoPieza" id="numpedidoPieza">
+                    </select>
                     <label for="numpiezaalta">Numero de Pieza: </label>
                     <input type="number" name="numpiezaalta" id="numpiezaalta" required>
-                    <label for="numpedidoPieza">Numero de Pedido:</label>
-                    <input type="number" name="numpedidoPieza" id="numpedidoPieza" required>
                     <label for="largo">Largo de Pieza: </label>
                     <input type="number" name="largo" id="largo" required>
                     <label for="ancho">Ancho de Pieza: </label>
@@ -82,7 +83,7 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded',()=>{detallesPedidos()});
-        document.addEventListener('DOMContentLoaded',()=>{cargaEventos()});
+        document.addEventListener('DOMContentLoaded',()=>{cargaEventosPiezas()});
     </script>
 </body>
 </html>

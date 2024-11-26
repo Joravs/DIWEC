@@ -56,12 +56,12 @@ function darAltaPedido(){
             document.getElementById('numpedidoalta').value,
             document.getElementById('nombreclientealta').value,
             document.getElementById('apellidoclientealta').value,
-            document.getElementById('procesadoalta').value,
-            document.getElementById('servidoalta').value,
+            document.getElementById('procesadoalta').value=='true'?true:false,
+            document.getElementById('servidoalta').value=='true'?true:false,
             document.getElementById('fechaalta').value
         );
         Listpedidos.push(ped);
-        const SetDatPedidos=localStorage.setItem('datosPedidos',JSON.stringify(Listpedidos));
+        localStorage.setItem('datosPedidos',JSON.stringify(Listpedidos));
         window.altaPedido.close();
     }
 }
@@ -73,33 +73,35 @@ function darBajaPedido(){
         alert('El número de pedido no existe');
         return;
     }
-    const SetDatPedidos=localStorage.setItem('datosPedidos',JSON.stringify(Listpedidos));
+    localStorage.setItem('datosPedidos',JSON.stringify(Listpedidos));
     window.bajaPedido.close();
 }
 
 function modificarPedido(){
-    let index=Listpedidos.indexOf(document.getElementById('numpedidomod').value);
     if(Listpedidos.find((el)=> el.numpedido==document.getElementById('numpedidomod').value)){
         let ped=new Pedido(
             document.getElementById('numpedidomod').value,
-            document.getElementById('nombreclientemod').value?document.getElementById('nombreclientemod').value:Listpedidos[index].cliente.nombre,
-            document.getElementById('apellidoclientemod').value?document.getElementById('apellidoclientemod').value:Listpedidos[index].cliente.apellido,
-            document.getElementById('procesadomod').value?document.getElementById('procesadomod').value:Listpedidos[index].procesado,
-            document.getElementById('servidomod').value?document.getElementById('servidomod'):Listpedidos[index].servido,
-            Date.now()
+            document.getElementById('nombreclientemod').value,
+            document.getElementById('apellidoclientemod').value,
+            document.getElementById('procesadomod').value,
+            document.getElementById('servidomod').value,
+            document.getElementById('fechamod').value
         );
         Listpedidos.push(ped);
-        const SetDatPedidos=localStorage.setItem('datosPedidos',JSON.stringify(Listpedidos));
+        localStorage.setItem('datosPedidos',JSON.stringify(Listpedidos));
         window.modificarPedido.close();
     }else{
         alert('El número de pedido no existe');
         return;
     }
 }
-function modPedForm(){
-    let dialMod=document.getElementById('formmodped');
+function pedForm(){
+    let select=document.getElementById('numpedidomod')?document.getElementById('numpedidomod'):document.getElementById('numpedidoPieza');
     Listpedidos.forEach((el)=>{
-        dialMod.children[1].appendChild(document.createElement('option')).innerHTML=el.numpedido;
+        const opt=document.createElement('option');
+        opt.value=el.numpedido;
+        opt.innerHTML=el.numpedido;
+        select.appendChild(opt);
     });
 }
 
@@ -121,6 +123,8 @@ function detallesPedidos(){
     });
 }
 function datosPedidos(){
+    console.log(Listpedidos);
+    Listpedidos.sort((a,b)=>{return a.numpedido-b.numpedido;});
     let table=document.getElementById('tbl');
     Listpedidos.forEach((el) => {
         table.appendChild(document.createElement('tr'));
@@ -137,13 +141,14 @@ const cargaEventosPedidos = () => {
     document.getElementById('darBajaPedido').addEventListener('click', darBajaPedido);
     document.getElementById('modPedido').addEventListener('click', modificarPedido);
     
-    document.getElementById('btnmodPed').addEventListener('click', modPedForm);
+    document.getElementById('btnmodPed').addEventListener('click', pedForm);
 }
 const cargaEventosPiezas =()=>{
     document.getElementById('darAltaPieza').addEventListener('click', darAltaPieza);
     document.getElementById('darBajaPieza').addEventListener('click', darBajaPieza);
     document.getElementById('modPieza').addEventListener('click', modificarPieza);
-
+    
+    document.getElementById('btnaltapiz').addEventListener('click', pedForm);
 }
 
 window.cargaEventosPedidos = cargaEventosPedidos;
