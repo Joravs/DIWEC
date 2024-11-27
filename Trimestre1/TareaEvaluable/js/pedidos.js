@@ -12,43 +12,11 @@ export default class Pedido{
         let Frec=new Date(Date.parse(fecha));
         let fech="";
         if (Frec>=Fnow){
-            fech=Fnow.getFullYear()+"-"+Fnow.getMonth()+"-"+Fnow.getDay();
+            fech=Fnow.getDate()+"-"+(Fnow.getMonth()+1)+"-"+Fnow.getFullYear();
             return fech;
         }else{
-            fech=Frec.getFullYear()+"-"+Frec.getMonth()+"-"+Frec.getDay();
+            fech=Frec.getDate()+"-"+(Frec.getMonth()+1)+"-"+Frec.getFullYear();
             return fech;
         }
-    }
-
-    setNumpedido(numpedido){
-        this.numpedido=parseInt(numpedido>0? numpedido:this.numpedido);
-    }
-    setCliente(nombre,apellido){
-        this.cliente.setNombre(nombre);
-        this.cliente.setApellido(apellido);
-    }
-    setFechapedido(fechapedido){
-        this.fechapedido=new Date(fechapedido);
-    }
-    setProcesado(procesado){
-        this.procesado=Boolean(procesado);
-    }
-    setServido(servido){
-        this.servido=Boolean(servido);
-    }
-    getNumpedido(){
-        return this.numpedido;
-    }
-    getCliente(){
-        return this.cliente;
-    }
-    getFechapedido(){
-        return this.fechapedido;
-    }
-    getProcesado(){
-        return this.procesado;
-    }
-    getServido(){
-        return this.servido;
     }
 }

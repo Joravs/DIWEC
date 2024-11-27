@@ -22,7 +22,7 @@
         background-color: #ccc;
     }
     .tabla{
-        margin-top:20px;
+        
         grid-area: tabla;
         display: flexbox;
     }
@@ -34,6 +34,7 @@
         overflow: auto;
         border-left:2px solid #ccc;
         border-right:2px solid #ccc;
+        border-bottom: 2px solid #ccc;
     }
     th{
         border: 0px;
@@ -41,7 +42,9 @@
         position: sticky;
     }
     td{
-        border: 2px solid #ccc;
+        border-bottom: 2px solid #ccc;
+        text-align: center;
+        padding-top: 2px;
     }
 }
 .containerindex{
@@ -52,6 +55,15 @@
     .header{
         grid-area: header;
         text-align: center;
+    }
+    .header .a::before,.header .a::after{
+        content: "";
+        display: block;
+        margin:0px;
+        height: 2px;
+        width: 15%;
+        margin: auto;
+        background-color: #ccc;
     }
     .content{
         grid-area: content;
@@ -64,13 +76,8 @@
         text-decoration: none;
         text-align: left;
     }
-    .piezas::after,.pedidos::after{
-        content: "";
-        display: block;
+    .piezas,.pedidos{
         margin: 0px;
-        height: 2px;
-        width: 75%;
-        background-color: #ccc;
     }
     .detalles{
         margin-top: 60px;

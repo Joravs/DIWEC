@@ -10,11 +10,14 @@
 <body>
     <div class="containerdetalles">
         <div class="header">
-        <h1>MaderAviles | Pedidos</h1>
-        <a href="../index.html">Inicio</a>
+            <h1>MaderAviles | Pedidos</h1>
+            <div class="a">
+                <a href="../index.html">Inicio</a>
+                <a href="piezas.html">Piezas</a>
+                <a href="detalles.html">Detalles</a>
+            </div>
         </div>
         <div class="pedidos">
-            <h2>Pedidos</h2>
             <div class="botones">
                 <button type="button" onclick="window.altaPedido.showModal()">Alta</button>
                 <button type="button" onclick="window.bajaPedido.showModal()">Baja</button>
@@ -78,19 +81,10 @@
         </div>
         <div class="tabla">
             <table id="tbl">
-                <tr>
-                    <th>Num. Pedido</th>
-                    <th>Nombre Cliente</th>
-                    <th>Apellido Cliente</th>
-                    <th>Solicitado</th>
-                    <th>Servido</th>
-                    <th>Fecha del Pedido</th>
-                </tr>
             </table>
         </div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded',()=>{datosPedidos()});
         document.addEventListener('DOMContentLoaded',()=>{cargaEventosPedidos()});
     </script>
 </body>
