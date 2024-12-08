@@ -86,7 +86,7 @@ function darAltaPedido(){
         localStorage.setItem('datosPedidos',JSON.stringify(Listpedidos));
         window.altaPedido.close();
     }
-    
+    datosPedidos();
 }
 
 function darBajaPedido(){
