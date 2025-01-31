@@ -10,8 +10,14 @@ const Visor=(props)=>{
         if (visorImagenes){visorImagenes.src=path;}
     };
     const avanzar=()=>{
-        if(indiceActual<img.length-1){indiceActual++;mostrarImagen()}
+        if(indiceActual<img.length-1){indiceActual++}
         else{indiceActual=0}
+        mostrarImagen();
+    };
+    const retroceder=()=>{
+        if(indiceActual>0){indiceActual--;}
+        else{indiceActual=img.length-1}
+        mostrarImagen();
     };
     return(
         <div className="Visor">
