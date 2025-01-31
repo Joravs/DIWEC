@@ -19,9 +19,18 @@ const Visor=(props)=>{
         else{indiceActual=img.length-1}
         mostrarImagen();
     };
+    const primera=()=>{
+        indiceActual=0;
+        mostrarImagen();
+    }
+    const ultima=()=>{
+        indiceActual=img.length-1;
+        mostrarImagen();
+    }
+    setTimeout(()=>{mostrarImagen();},0);
     return(
         <div className="Visor">
-
+            
         </div>
     )
 }
