@@ -8,7 +8,7 @@ import EjemploState3 from './components/State/EjemploState3.js';
 import Visor from './components/visor.js';
 
 function App() {
-  const imgSrc=["./components/src/hllwn-dog.jfif","./components/src/hllwn-main.jpg","hllwn-pumpking.jfif"];
+  const imgSrc=["../public/src/hllwn-dog.jfif","../public//src/hllwn-main.jpg","../public/src/hllwn-pumpking.jfif"];
   const nombre = 'Jordy';
   return (
     <div className="App">
