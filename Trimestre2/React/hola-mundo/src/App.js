@@ -1,9 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import Acercade from './components/Acercade.js';
-import Bucle from './components/Bucle.js';
+/* import Bucle from './components/Bucle.js';
 import Saludar from './components/Saludar.js';
-import EjemploEstado from './components/State/EjemploState.js';
+import EjemploEstado from './components/State/EjemploState.js'; */
 import EjemploState3 from './components/State/EjemploState3.js';
 
 function App() {
