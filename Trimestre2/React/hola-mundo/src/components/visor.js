@@ -33,10 +33,10 @@ const Visor=(props)=>{
             <img id="visorImagenes" className='img'></img>
             <br/>
             <div className='btns'>
-                <button onClick={retroceder}><FontAwesomeIcon icon={faBackward}/></button>
-                <button onClick={primera}><FontAwesomeIcon icon={faPlay}/></button>
-                <button onClick={avanzar}><FontAwesomeIcon icon={faForward}/></button>
-                <button onClick={ultima}><FontAwesomeIcon icon={faPlay}/></button>
+                <button onClick={avanzar}><FontAwesomeIcon icon={faPlay}/></button>
+                <button onClick={ultima}><FontAwesomeIcon icon={faForward}/></button>
+                <button onClick={retroceder}><FontAwesomeIcon icon={faPlay} className='flip-horizontal'/></button>
+                <button onClick={primera}><FontAwesomeIcon icon={faBackward}/></button>
             </div>
         </div>
     )

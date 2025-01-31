@@ -7,6 +7,7 @@ import EjemploEstado from './components/State/EjemploState.js'; */
 import EjemploState3 from './components/State/EjemploState3.js';
 
 function App() {
+  const imgSrc="l";
   const nombre = 'Jordy';
   return (
     <div className="App">
@@ -19,7 +20,8 @@ function App() {
         {/* <Bucle /> */}
         {/* <Saludar nombre="Jordy" edad="21"/> */}
         {/* <EjemploEstado/> */}
-        <EjemploState3/>
+        {/* <EjemploState3/> */}
+      <Visor/>
       </header>
       <Acercade />
     </div>
