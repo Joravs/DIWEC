@@ -4,7 +4,7 @@ const EjemploState3 = ()=> {
     const [estado,setEstado]=useState(
         {
             titulo: "Por defecto",
-            hora: new Date().toLocaleDateString(),
+            hora: new Date().toLocaleTimeString(),
             numero:0,
             numeros:[]
         }
@@ -15,7 +15,7 @@ const EjemploState3 = ()=> {
         numeros.push(numero);
         setEstado(
             {
-                hora: new Date().toLocaleDateString(),
+                hora: new Date().toLocaleTimeString(),
                 numeros: numeros,
                 numero: numero,
                 titulo: numero % 2 === 0? "Par" : "Impar"
