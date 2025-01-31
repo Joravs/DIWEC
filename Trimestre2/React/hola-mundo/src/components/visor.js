@@ -5,7 +5,7 @@ const Visor=(props)=>{
     let indiceActual =0;
     const img=props.img;
     const mostrarImagen=()=>{
-        const path='/img/' + props.img[indiceActual];
+        const path='/src/' + props.img[indiceActual];
         const visorImagenes= document.getElementById('visorImagenes');
         if (visorImagenes){visorImagenes.src=path;}
     };
@@ -30,8 +30,10 @@ const Visor=(props)=>{
     setTimeout(()=>{mostrarImagen();},0);
     return(
         <div className="Visor">
-            <img id="visorImagenes" className='img'></img>
-            <br/>
+            <div>
+                <img id="visorImagenes" className='img'></img>
+                <br/>
+            </div>
             <div className='btns'>
                 <button onClick={avanzar}><FontAwesomeIcon icon={faPlay}/></button>
                 <button onClick={ultima}><FontAwesomeIcon icon={faForward}/></button>
