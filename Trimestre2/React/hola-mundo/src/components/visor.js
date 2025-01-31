@@ -11,6 +11,7 @@ const Visor=(props)=>{
     };
     const avanzar=()=>{
         if(indiceActual<img.length-1){indiceActual++;mostrarImagen()}
+        else{indiceActual=0}
     };
     return(
         <div className="Visor">
