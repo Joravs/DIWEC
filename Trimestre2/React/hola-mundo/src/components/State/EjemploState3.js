@@ -15,7 +15,7 @@ const EjemploState3 = ()=> {
         numeros.push(numero);
         setEstado(
             {
-                hora: new Date().toLocaleDateString,
+                hora: new Date().toLocaleDateString(),
                 numeros: numeros,
                 numero: numero,
                 titulo: numero % 2 === 0? "Par" : "Impar"
