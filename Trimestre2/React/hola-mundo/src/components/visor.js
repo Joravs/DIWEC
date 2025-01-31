@@ -30,7 +30,14 @@ const Visor=(props)=>{
     setTimeout(()=>{mostrarImagen();},0);
     return(
         <div className="Visor">
-            
+            <img id="visorImagenes" className='img'></img>
+            <br/>
+            <div className='btns'>
+                <button onClick={retroceder}><FontAwesomeIcon icon={faBackward}/></button>
+                <button onClick={primera}><FontAwesomeIcon icon={faPlay}/></button>
+                <button onClick={avanzar}><FontAwesomeIcon icon={faForward}/></button>
+                <button onClick={ultima}><FontAwesomeIcon icon={faPlay}/></button>
+            </div>
         </div>
     )
 }
