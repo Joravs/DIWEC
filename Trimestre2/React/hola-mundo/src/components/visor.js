@@ -1,4 +1,4 @@
-import './Visor.css';
+import './visor.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPlay,faForward,faBackward} from '@fortawesome/free-solid-svg-icons';
 const Visor=(props)=>{

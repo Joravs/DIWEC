@@ -5,9 +5,10 @@ import Acercade from './components/Acercade.js';
 import Saludar from './components/Saludar.js';
 import EjemploEstado from './components/State/EjemploState.js'; */
 import EjemploState3 from './components/State/EjemploState3.js';
+import Visor from './components/visor.js';
 
 function App() {
-  const imgSrc="l";
+  const imgSrc=new Array("./components/src/hllwn-dog.jfif","./components/src/hllwn-main.jpg","./components/src/hllwn-pumpking.jfif");
   const nombre = 'Jordy';
   return (
     <div className="App">
@@ -21,7 +22,7 @@ function App() {
         {/* <Saludar nombre="Jordy" edad="21"/> */}
         {/* <EjemploEstado/> */}
         {/* <EjemploState3/> */}
-      <Visor/>
+      <Visor img={imgSrc}/>
       </header>
       <Acercade />
     </div>
