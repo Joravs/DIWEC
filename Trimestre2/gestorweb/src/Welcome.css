@@ -1,0 +1,5 @@
+.botones{
+    display: grid;
+    justify-content: space-around;
+    gap: 8px;
+}
