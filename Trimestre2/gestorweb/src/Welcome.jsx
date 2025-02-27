@@ -1,5 +1,6 @@
 import './Welcome.css'
 import { BrowserRouter,Routes,Route } from 'react-router-dom'
+import {ExpresionesProvider} from './functions/RegularExpressions';
 import ButtonAction from './ButtonAction'
 import EliminarUsuario from './pages/EliminarUsuario'
 import AltaUsuario from './pages/AltaUsuario'
@@ -12,6 +13,7 @@ export default function Welcome() {
   }
   return (
     <BrowserRouter>
+     <ExpresionesProvider>
       <Routes>
         <Route path='/' element={
           <div className='botones'>
@@ -27,6 +29,7 @@ export default function Welcome() {
         <Route path='/pages/ModificarUsuario' element={<ModificarUsuario />} />
         <Route path='/pages/EliminarUsuario' element={<EliminarUsuario />} />
       </Routes>
+      </ExpresionesProvider>
     </BrowserRouter>
   )
 }
