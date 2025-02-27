@@ -9,20 +9,10 @@ export default function AltaUsuario(){
     const [password, setPassword] = useState("");
     const [apellido, setApellido] = useState("");
     const [fechaNac, setFechaNac] = useState("");
+    let [log,setLog]= useState("");
 
     const{expressions}=useContext(expresionesContext);
-    const handleUsername= (e)=>{
-        let value=e.target.value;
-        if(expressions.username.test(value)){
-            setUsername(value);
-        }
-    }
-    const handlePassword= (e)=>{
-        let value=e.target.value;
-        if(expressions.password.test(value)){
-            setPassword(value);
-        }
-    }
+
     const handleEdad=(e)=>{
         var hoy = new Date();
         var edad= new Date(e.target.value);
@@ -32,16 +22,25 @@ export default function AltaUsuario(){
         }
     }
     const handleSubmit=(e,type)=>{
+        let value=e.target.value;
         switch(type){
             case 'nombre':
-                setNombre(e.target.value);
+                setNombre(value);
                 break;
             case 'apellido':
-                setApellido(e.target.value);
+                setApellido(value);
+                break;
+            case 'username':
+                setUsername(value);
+                break;
+            case 'password':
+                setPassword(value);
                 break;
         }
     }
     const insertSubmit = ()=>{
+        setUsername(expressions.username.test(username)?username:'');
+        setPassword(expressions.password.test(password)?password:'');
         if(nombre!=="" && apellido!=="" && username!=="" && password!==""){
             const headers = {
                 Accept: "application/json",
@@ -49,26 +48,37 @@ export default function AltaUsuario(){
             }
             const data = {nombre,apellido,username,password}
 
-            fetch("http://localhost/DIWEC/Trimestre2/functionsphp/php/altaUsuario.php", {
+            fetch("http://localhost:8080/jordyrl/DIWEC/Trimestre2/functionsphp/altaUsuario.php", {
                 method: "POST",
                 headers: headers,
                 body: JSON.stringify(data),
             })
-           .then((response) => response.json())
            .then((response)=>{
-            if(response[0].respons==="Usuario creado correctamente"){
-                navigate('../');
+            if(!response.ok){
+                throw new Error("Fallo en la conexion");
             }
+            response.json()
            })
-           .catch((error) => {
-                console.error('Error:', error);
+           .catch((data) => {
+                console.error('Error:', data)
+                if(data.result){
+                    setLog(data.result)
+                }
             });
+        }else{
+            setLog('Dato Incorrecto')
         }
     }
 
     return (
         <div className="form">
             <h2>Alta de Usuario</h2>
+            {
+                log!==""?
+                <p className="errorClass">{log}</p>
+                :
+                null
+            }
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" value={nombre} onChange={(e)=>handleSubmit(e,'nombre')} required autoComplete="off"/>
                 <br/>
@@ -76,10 +86,10 @@ export default function AltaUsuario(){
                 <input type="text" id="apellido" name="apellido" value={apellido} onChange={(e)=>handleSubmit(e,'apellido')} required autoComplete="off"/>
                 <br/>
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" value={username} onChange={(e)=>handleUsername(e)} autoComplete="off"/>
+                <input type="text" id="username" name="username" value={username} onChange={(e)=>handleSubmit(e,'username')} autoComplete="off"/>
                 <br/>
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" value={password} onChange={(e)=>handlePassword(e)} autoComplete="off"/>
+                <input type="password" id="password" name="password" value={password} onChange={(e)=>handleSubmit(e,'password')} autoComplete="off"/>
                 <br/>
                 <label for="fechaNac">Fecha Nacimiento:</label>
                 <input type="date" id="fechaNac" name="fechaNac" value={fechaNac} onChange={(e)=>handleEdad(e)} required autoComplete="off"/>
