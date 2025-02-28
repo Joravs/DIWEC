@@ -12,26 +12,48 @@ try{
         throw new Exception("Error al decodificar JSON: " . json_last_error_msg());
     }
 
-    $username = $dData['username'];
-    // ob_start();
-    // echo $username;
-    // $output=ob_get_contents();
-    // file_put_contents('salida', $output);
-    // ob_end_clean();
+    $username = isset($dData['username'])?$dData['username']:"";
+    $nombre =  isset($dData['nombre'])?$dData['nombre']:"";
+    $apellido =  isset($dData['apellido'])?$dData['apellido']:"";
+    $fechaNac = isset($dData['fechaNac'])?$dData['fechaNac']:"";
+    $password = isset($dData['password'])?password_hash($dData['password'], PASSWORD_BCRYPT):"";
 
     $result= "";
     
     if($username){
-        $stmt = $conn -> prepare ('SELECT nombre,apellido,fechaNac,username FROM usuario where username = ?');
+        $sentencia = 'UPDATE usuario SET ';
+        $tipoDato='';
+        $datos=[];
+        if($nombre){
+            $sentencia.="nombre=?,";
+            $tipoDato.="s";
+            array_push($nombre,$datos);
+        }
+        if($apellido){
+            $sentencia.="apellido=?,";
+            $tipoDato.="s";
+            array_push($apellido,$datos);
+        }
+        if($fechaNac){
+            $sentencia.="fechaNac=?,";
+            $tipoDato.="s";
+            array_push($fechaNac,$datos);
+        }
+        if($password){
+            $sentencia.="password=?,";
+            $tipoDato.="s";
+            array_push($password,$datos);
+        }
+        $sentencia.=" WHERE username = ?";
+        $stmt = $conn -> prepare ($datos);
         if(!$stmt){
             throw new Exception("Error al preparar la consulta: ". $conn->error);
         }
-        $stmt -> bind_param('s', $username);
+        $stmt -> bind_param($tipoDato,$datos, $username);
         $stmt -> execute();
-        $stmt->bind_result($nombre, $apellido, $fechaNac, $username);
 
         if($stmt->fetch()){
-            $result= ["nombre"=>$nombre, "apellido"=>$apellido, "fechaNac"=>$fechaNac,"username"=>$username];
+            $result= "Usuario Modificado Correctamente";
         }else{
             $result="Ha ocurrido un problema en la obtencion del usuario";
         }

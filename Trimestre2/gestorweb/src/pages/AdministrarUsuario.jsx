@@ -4,7 +4,7 @@ import {expresionesContext} from '../functions/RegularExpressions';
 import { TablaUsuarios } from "./component/Tabla";
 import {Link} from 'react-router-dom';
 
-export default function VisualizarUsuario({modificar}){
+export default function AdministrarUsuario(){
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [logun,setLogUn]= useState([]);
@@ -32,7 +32,7 @@ export default function VisualizarUsuario({modificar}){
                 "Content-Type": "application/json",
             }
             const data = {username}
-            fetch("http://localhost/DIWEC/Trimestre2/functionsphp/modificarUsuario.php", {
+            fetch("http://localhost/DIWEC/Trimestre2/functionsphp/verUsuario.php", {
                 method: "POST",
                 headers: headers,
                 body: JSON.stringify(data),
@@ -48,19 +48,16 @@ export default function VisualizarUsuario({modificar}){
             })
             .catch((data) => {
                 console.error('Error:', data)
-                if(data.result){
-                    
-                }
             });
         }else{
-            setLog('Datos Modificados Datos')
+            setLog('No se pudo administrar este usuario')
         }
     }
 
     return (
         <div className="row form text-center text-white p-auto">
             <div className="row-1 col-12 mt-5">
-                <h2 className="fs-1">Modificar Usuario</h2>
+                <h2 className="fs-1">Administrar Usuario</h2>
             </div>
             <div className="row m-auto my-5 w-75">
                 <div className="mb-3 col-6">
@@ -80,7 +77,7 @@ export default function VisualizarUsuario({modificar}){
             </div>
             <div id="mostrarUsuario" className="d-flex justify-content-center fs-5">        
             </div>
-            <div id="mostrarUsuario" className="d-flex justify-content-center fs-5 mt-5">
+            <div className="d-flex justify-content-center fs-5 mt-5">
                 <button className='btn btn-primary col-4 m-1'><Link to={`../`} className='text-white text-decoration-none'>Volver al Inicio</Link></button>
             </div>
         </div>

@@ -1,4 +1,4 @@
-import { TablaUsuarios } from "./Tabla";
+import { TablaUsuarios } from "./component/Tabla";
 import {Link} from 'react-router-dom'
 
 export default function VisualizarUsuario({modificar}){
@@ -33,7 +33,7 @@ export default function VisualizarUsuario({modificar}){
             <div id="mostrarUsuario" className="d-flex justify-content-center fs-5 mb-5">
                 <button type="button" className="mt-5 col-6 btn btn-info" onClick={buscarUsuario}>Mostrar Usuarios</button>
             </div>
-            <div id="mostrarUsuario" className="d-flex justify-content-center fs-5 mt-5">
+            <div className="d-flex justify-content-center fs-5 mt-5">
                 <button className='btn btn-primary col-4 m-1'><Link to={`../`} className='text-white text-decoration-none'>Volver al Inicio</Link></button>
             </div>
         </div>

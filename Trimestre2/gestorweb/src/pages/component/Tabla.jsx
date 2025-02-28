@@ -1,5 +1,5 @@
 export function TablaUsuarios(data){
-    let mostrarBoton = false;
+    let compos=``;
     const tablaData = (data)=>{
         let tablaHTML ='';
         for(const key in data){
@@ -15,13 +15,14 @@ export function TablaUsuarios(data){
                     </tr>`
                 }
             }else{
-                mostrarBoton = true;
+                compos=`<th scope="col">Modificar</th><th scope="col">Eliminar</th>`;
                 tablaHTML += `<tr>
                         <td>${valor.username}</td>
                         <td>${valor.nombre}</td>
                         <td>${valor.apellido}</td>
                         <td>${valor.fechaNac}</td>
-                        <td><button className='btn btn-primary' onClick="${modificar}">Modificar</Link></button></td>
+                        <td><button id="${valor.username}" value="${valor.username}" type="button" className="align-self-end btn btn-info" onClick="UpdateOrDelete(${valor.username},'modificar')">Modificar Usuario</button></td>
+                        <td><button id="${valor.nombre}" value="${valor.nombre}" type="button" className="align-self-end btn btn-info" onClick="UpdateOrDelete(${valor.username},'eliminar')">Eliminar Usuario</button></td>
                     </tr>`
             }
         }
@@ -39,11 +40,7 @@ export function TablaUsuarios(data){
                             <th scope="col">Nombre</th>
                             <th scope="col">Apellido</th>
                             <th scope="col">Fecha de Nacimiento</th>
-                            ${
-                                mostrarBoton?
-                                `<th scope="col">Modificar</th>`:
-                                ''
-                            }
+                            ${compos}
                         </tr>
                     </thead>
                     <tbody>
