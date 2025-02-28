@@ -4,8 +4,13 @@ export const expresionesContext = createContext();
 
 export const ExpresionesProvider = ({ children }) => {
     const [expresiones, setExpresiones] = useState({
-        username:/^[a-z]+\d{6}$/,
-        password: /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8}/
+        username1:/(^[a-z])/,
+        username2:/(?=.*\d)/,
+        username3:/[a-z0-9]{5,}/,
+        password1: /(?=.*[a-z])/,
+        password2: /(?=.*[A-Z])/,
+        password3: /(?=.*\d)/,
+        password4: /[a-z0-9]{5,}/,
     });
     return (
         <expresionesContext.Provider value={{ expressions: expresiones, setExpresiones }}>

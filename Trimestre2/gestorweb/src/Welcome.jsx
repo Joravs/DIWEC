@@ -1,4 +1,3 @@
-import './Welcome.css'
 import { BrowserRouter,Routes,Route } from 'react-router-dom'
 import {ExpresionesProvider} from './functions/RegularExpressions';
 import ButtonAction from './ButtonAction'
@@ -16,8 +15,8 @@ export default function Welcome() {
      <ExpresionesProvider>
       <Routes>
         <Route path='/' element={
-          <div className='botones'>
-            <h1>Bienvenid@ al Gestor de Usuario</h1>
+          <div className='row w-100 mx-auto d-flex justify-content-center'>
+            <h1 className='text-white text-center col-12 mb-5'>Bienvenid@ al Gestor de Usuario</h1>
             <ButtonAction onClick={button} nombreBoton="Alta Usuario"/>
             <ButtonAction onClick={button} nombreBoton="Visualizar Usuario"/>
             <ButtonAction onClick={button} nombreBoton="Modificar Usuario"/>

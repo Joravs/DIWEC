@@ -12,30 +12,31 @@ try{
         throw new Exception("Error al decodificar JSON: " . json_last_error_msg());
     }
 
-    $nombre =  $dData['nombre'];
-    $apellido =  $dData['apellido'];
-    $fechaNac = $dData['fechaNac'];
     $username = $dData['username'];
-    $password = password_hash($dData['password'], PASSWORD_BCRYPT);
+    // ob_start();
+    // echo $username;
+    // $output=ob_get_contents();
+    // file_put_contents('salida', $output);
+    // ob_end_clean();
 
     $result= "";
     
-    if($nombre && $apellido && $fechaNac && $username && $password){
-        $stmt = $conn -> prepare ('INSERT INTO usuario (nombre,apellido,fechaNac,username,password)
-                                    VALUES (?,?,?,?,?);');
+    if($username){
+        $stmt = $conn -> prepare ('SELECT nombre,apellido,fechaNac,username FROM usuario where username = ?');
         if(!$stmt){
             throw new Exception("Error al preparar la consulta: ". $conn->error);
         }
-        $stmt -> bind_param('sssss', $nombre, $apellido,$fechaNac ,$username, $password);
+        $stmt -> bind_param('s', $username);
         $stmt -> execute();
+        $stmt->bind_result($nombre, $apellido, $fechaNac, $username);
 
-        if($stmt->affected_rows){
-            $result="Usuario creado correctamente";
+        if($stmt->fetch()){
+            $result= ["nombre"=>$nombre, "apellido"=>$apellido, "fechaNac"=>$fechaNac,"username"=>$username];
         }else{
-            $result="Ha ocurrido un problema en la creacion del usuario";
+            $result="Ha ocurrido un problema en la obtencion del usuario";
         }
     }else{
-        $result="Todos los campos son requeridos";
+        $result="No se proporciono usuario";
     }
     $conn->close();
 }catch(Exception $e){

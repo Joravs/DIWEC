@@ -1,7 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import Welcome from './Welcome.jsx'
-import './index.css'
+import './scss/style.scss'
+import * as bootstrap from 'bootstrap'
 import $ from 'jquery'
 window.$ = $;
 window.jQuery = $;
