@@ -1,3 +1,4 @@
+import {UpdateOrDelete} from './UpdateOrDelet';
 export function TablaUsuarios(data){
     let compos=``;
     const tablaData = (data)=>{

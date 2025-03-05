@@ -1,5 +1,5 @@
 <?php
-    $hn = 'localhost';
+    $hn = 'localhost:3307';
     $un = 'adminDiabetes';
     $pw = 'adminDiabetes';
     $db = 'controlDiabetes';

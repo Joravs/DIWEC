@@ -1,4 +1,4 @@
-const UpdateOrDelete= (data, option)=> {
+export const UpdateOrDelete= (data, option)=> {
     console.log('Datos '+option);
     const eliminarUsuario = (data)=>{
         console.log('Eliminar '+data);

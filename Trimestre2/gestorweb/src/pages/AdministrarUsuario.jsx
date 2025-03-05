@@ -32,7 +32,7 @@ export default function AdministrarUsuario(){
                 "Content-Type": "application/json",
             }
             const data = {username}
-            fetch("http://localhost/DIWEC/Trimestre2/functionsphp/verUsuario.php", {
+            fetch("http://localhost:8080/jordyrl/DIWEC/Trimestre2/functionsphp/verUsuario.php", {
                 method: "POST",
                 headers: headers,
                 body: JSON.stringify(data),

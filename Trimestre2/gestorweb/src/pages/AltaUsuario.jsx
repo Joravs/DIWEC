@@ -85,7 +85,7 @@ export default function AltaUsuario(){
             }
             const data = {nombre,apellido,username,password,fechaNac}
 
-            fetch("http://localhost/DIWEC/Trimestre2/functionsphp/altaUsuario.php", {
+            fetch("http://localhost:8080/jordyrl/DIWEC/Trimestre2/functionsphp/altaUsuario.php", {
                 method: "POST",
                 headers: headers,
                 body: JSON.stringify(data),

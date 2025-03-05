@@ -7,7 +7,7 @@ export default function VisualizarUsuario({modificar}){
             Accept: "application/json",
             "Content-Type": "application/json",
         }
-        fetch("http://localhost/DIWEC/Trimestre2/functionsphp/visualizarUsuario.php", {
+        fetch("http://localhost:8080/jordyrl/DIWEC/Trimestre2/functionsphp/visualizarUsuario.php", {
             method: "POST",
             headers: headers,
         })
