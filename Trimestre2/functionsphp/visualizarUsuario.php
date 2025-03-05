@@ -13,11 +13,6 @@ try{
     $stmt->bind_result($nombre, $apellido, $fechaNac, $username);
 
     while($stmt->fetch()){
-            // ob_start();
-            // var_dump($stmt->fetch());
-            // $output=ob_get_contents();
-            // file_put_contents('salida', $output);
-            // ob_end_clean();
             $result[]= ["nombre"=>$nombre, "apellido"=>$apellido, "fechaNac"=>$fechaNac,"username"=>$username];
     }
     $conn->close();
