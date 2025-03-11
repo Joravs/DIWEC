@@ -1,24 +1,8 @@
-import { useState,useEffect } from 'react'
-export function MasPopular(props){
-    const [canciones, setCanciones] = useState([]);
-    const [maxPopular, setMaxPopular] = useState(null);
-    useEffect(() => {
-      const songs = async () => {
-        if (Array.isArray(props)) {
-          setCanciones(props);
-        }
-      };
-      songs();
-    }, [props]);
-  
-    useEffect(() => {
-      if (canciones.length > 0) { 
-        const cancionMasPopular = canciones.reduce((max, cancion) => {
-          return max.track_popularity > cancion.track_popularity ? max : cancion;
-        });
-        setMaxPopular(cancionMasPopular);
-      }
-    }, [canciones]);
+export function MasPopular({canciones}){
+    if(canciones.lenght<=0){return <p>No hay canciones</p>}
+    const maxPopular = canciones.reduce((max, cancion) => {
+      return max.track_popularity > cancion.track_popularity ? max : cancion;
+    },canciones[0]);
     return(
         <>
             <h2>Cancion mas popular</h2>

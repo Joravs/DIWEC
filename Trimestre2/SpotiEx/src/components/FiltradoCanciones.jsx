@@ -2,8 +2,7 @@ import { useState } from 'react'
 import $ from 'jquery'
 import { ListadoCanciones } from './ListadoCanciones'
 
-export function FiltradoCanciones(props){
-    const {canciones}=props;
+export function FiltradoCanciones({canciones}){
     const [artista, setArtista] = useState('');
     const search = (e)=>{
         setArtista(e.target.value);

@@ -1,6 +1,4 @@
-export function ListadoCanciones(props) {
-    const {canciones}=props;
-    
+export function ListadoCanciones({canciones}) {
 return(
     <>
         <table>
