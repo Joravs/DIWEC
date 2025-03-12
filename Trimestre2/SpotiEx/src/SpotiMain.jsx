@@ -15,9 +15,13 @@ function SpotiMain() {
   }, [])
   return (
     <>
-      <h1>Canciones de Spotify</h1>
-      <FiltradoCanciones canciones={canciones}/>
-      <MasPopular canciones={canciones}/>
+    <div className="row">
+      <div className="col-6"><h1>Canciones de Spotify</h1></div>
+      <div className="row mt-5">
+        <FiltradoCanciones canciones={canciones}/>
+      </div>
+      <div className="col"><MasPopular canciones={canciones}/></div>
+    </div>
     </>
   )
 }
