@@ -2,12 +2,12 @@ import { TablaUsuarios } from "./component/Tabla";
 import {Link} from 'react-router-dom'
 
 export default function VisualizarUsuario({modificar}){
-    const buscarUsuario = ()=>{
+    const buscarUsuario = async()=>{
         const headers = {
             Accept: "application/json",
             "Content-Type": "application/json",
         }
-        fetch("http://localhost:8080/jordyrl/DIWEC/Trimestre2/functionsphp/visualizarUsuario.php", {
+        await fetch("http://localhost:5173/src/functions/functionsphp/visualizarUsuario.php", {
             method: "POST",
             headers: headers,
         })
