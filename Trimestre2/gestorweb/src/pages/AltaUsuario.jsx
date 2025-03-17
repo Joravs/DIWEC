@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import {useNavigate} from 'react-router-dom';
 import {expresionesContext} from '../functions/RegularExpressions';
 
-export default function AltaUsuario(){
+export default function AltaUsuario({closeModal}){
     const navigate = useNavigate();
     const [nombre, setNombre] = useState("");
     const [username, setUsername] = useState("");
@@ -85,7 +85,7 @@ export default function AltaUsuario(){
             }
             const data = {nombre,apellido,username,password,fechaNac}
 
-            fetch("http://localhost:8080/jordyrl/DIWEC/Trimestre2/functionsphp/altaUsuario.php", {
+            fetch("http://localhost:8085/altaUsuario.php", {
                 method: "POST",
                 headers: headers,
                 body: JSON.stringify(data),
@@ -94,6 +94,7 @@ export default function AltaUsuario(){
                 if(!response.ok){
                     throw new Error("Fallo en la conexion");
                 }
+                closeModal();
                 return response.json()
            })
            .then( navigate('../'))

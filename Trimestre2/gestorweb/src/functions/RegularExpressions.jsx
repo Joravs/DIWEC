@@ -10,7 +10,7 @@ export const ExpresionesProvider = ({ children }) => {
         password1: /(?=.*[a-z])/,
         password2: /(?=.*[A-Z])/,
         password3: /(?=.*\d)/,
-        password4: /[a-z0-9]{5,}/,
+        password4: /^.{8,}$/,
     });
     return (
         <expresionesContext.Provider value={{ expressions: expresiones, setExpresiones }}>

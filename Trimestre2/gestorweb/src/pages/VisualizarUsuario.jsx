@@ -1,9 +1,9 @@
-import {useState} from 'react'
 import { TablaUsuarios } from "./component/Tabla";
 import AdministrarUsuario from './AdministrarUsuario'
 import AltaUsuario from './AltaUsuario'
 
 export default function VisualizarUsuario(){
+    const modalRef = useRef(null);
     const buscarUsuario = async()=>{
         const headers = {
             Accept: "application/json",
@@ -46,7 +46,7 @@ export default function VisualizarUsuario(){
                 <div className="modal fade" id="modalId" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"aria-hidden="true">
                     <div className="modal-dialog modal-sm modal-fullscreen" role="document">
                         <div className="modal-content">
-                            <AltaUsuario/>
+                            <AltaUsuario closeModal={() => modalRef.current?.classList.remove('show')} />
                         </div>
                     </div>
                 </div>
