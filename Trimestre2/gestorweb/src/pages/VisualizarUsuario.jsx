@@ -1,7 +1,7 @@
 import { TablaUsuarios } from "./component/Tabla";
 import {Link} from 'react-router-dom'
 
-export default function VisualizarUsuario({modificar}){
+export default function VisualizarUsuario(){
     const buscarUsuario = async()=>{
         const headers = {
             Accept: "application/json",
