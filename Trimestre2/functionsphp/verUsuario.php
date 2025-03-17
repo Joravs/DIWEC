@@ -1,7 +1,7 @@
 <?php    
     require_once './ctdb.php';
     header('Access-Control-Allow-Origin: *');
-    header('Access-Control-Allow-Method: POST');
+    header('Access-Control-Allow-Method: GET,POST');
     header('Access-Control-Allow-Headers: Content-Type');
     header('Content-Type: application/json');
 try{
@@ -12,7 +12,7 @@ try{
         throw new Exception("Error al decodificar JSON: " . json_last_error_msg());
     }
 
-    $username = $dData['username'];
+    $username = $dData['username1'];
 
     $result= "";
     
