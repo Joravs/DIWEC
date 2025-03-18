@@ -1,51 +1,52 @@
-import {useRef} from 'react'
+import { useRef } from 'react';
 import { TablaUsuarios } from "./component/Tabla";
-import AdministrarUsuario from './AdministrarUsuario'
-import AltaUsuario from './AltaUsuario'
+import AdministrarUsuario from './AdministrarUsuario';
+import AltaUsuario from './AltaUsuario';
 
-export default function VisualizarUsuario(){
+export default function VisualizarUsuario() {
     const modalRef = useRef(null);
-    const handleButton= (username,tipo)=>{
-        if(tipo=="modificar"){
-
+    const handleButton = (username, tipo) => {
+        if (tipo === "modificar") {
+            console.log(`Modificar usuario: ${username}`);
+            // Aquí puedes agregar lógica para modificar el usuario
+        } else if (tipo === "eliminar") {
+            console.log(`Eliminar usuario: ${username}`);
+            // Aquí puedes agregar lógica para eliminar el usuario
         }
-        else if(tipo=="eliminar"){
-            
-        }
-    }
-    const buscarUsuario = async()=>{
+    };
+    const buscarUsuario = async () => {
         const headers = {
             Accept: "application/json",
             "Content-Type": "application/json",
-        }
+        };
         await fetch("http://localhost:8085/visualizarUsuario.php", {
             method: "POST",
             headers: headers,
         })
-        .then((response)=>{
-            if(!response.ok){
-                throw new Error("Fallo en la conexion");
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Fallo en la conexión");
             }
-            return response.json()
+            return response.json();
         })
-        .then((data)=>{
-            TablaUsuarios(data,handleButton)
+        .then((data) => {
+            TablaUsuarios(data, handleButton);
         })
-        .catch((data) => {
-            console.error('Error:', data)
+        .catch((error) => {
+            console.error('Error:', error);
         });
-    }
+    };
+
     return (
         <div className="row form text-center text-white p-auto">
             <div className="row-1 col-12">
-                <h2 className="fs-1">Gestion de Usuarios</h2>
+                <h2 className="fs-1">Gestión de Usuarios</h2>
             </div>
             <div className="row-1 col-12">
-                <AdministrarUsuario/>
-                <div id="mostrarUsuario" className="d-flex justify-content-center fs-5 mb-5">
-                </div>
+                <AdministrarUsuario />
+                <div id="mostrarUsuario" className="d-flex justify-content-center fs-5 mb-5"></div>
                 
-                <div className="modal fade" id="modalId" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"aria-hidden="true">
+                <div className="modal fade" id="modalId" tabIndex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
                     <div className="modal-dialog modal-sm modal-fullscreen" role="document">
                         <div className="modal-content">
                             <AltaUsuario closeModal={() => modalRef.current?.classList.remove('show')} />
