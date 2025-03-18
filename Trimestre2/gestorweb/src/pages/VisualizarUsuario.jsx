@@ -8,10 +8,10 @@ export default function VisualizarUsuario() {
     const handleButton = (username, tipo) => {
         if (tipo === "modificar") {
             console.log(`Modificar usuario: ${username}`);
-            // Aquí puedes agregar lógica para modificar el usuario
+
         } else if (tipo === "eliminar") {
             console.log(`Eliminar usuario: ${username}`);
-            // Aquí puedes agregar lógica para eliminar el usuario
+
         }
     };
     const buscarUsuario = async () => {
@@ -43,8 +43,9 @@ export default function VisualizarUsuario() {
                 <h2 className="fs-1">Gestión de Usuarios</h2>
             </div>
             <div className="row-1 col-12">
-                <AdministrarUsuario />
-                <div id="mostrarUsuario" className="d-flex justify-content-center fs-5 mb-5"></div>
+                <AdministrarUsuario/>
+                <div id="mostrarUsuario" className="d-flex justify-content-center fs-5 mb-5">
+                </div>
                 
                 <div className="modal fade" id="modalId" tabIndex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
                     <div className="modal-dialog modal-sm modal-fullscreen" role="document">
