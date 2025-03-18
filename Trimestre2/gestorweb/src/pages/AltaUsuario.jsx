@@ -94,10 +94,9 @@ export default function AltaUsuario({closeModal}){
                 if(!response.ok){
                     throw new Error("Fallo en la conexion");
                 }
-                closeModal();
+                closeModal(); /// Solucionar el Error
                 return response.json()
            })
-           .then( navigate('../'))
            .catch((data) => {
                 console.error('Error:', data)
                 if(data.result){
@@ -155,6 +154,8 @@ export default function AltaUsuario({closeModal}){
                     <small id="fechaNacHelp" className="form-text text-info fs-6">{error3?logf:''}</small>
                 </div>
                 <button type="button" className="btn btn-info" onClick={insertSubmit}>Insertar Usuario</button>
+
+                <small>Para Salir de Este Formulario pulsa "Esc"</small>
             </div>
         </div>
     );

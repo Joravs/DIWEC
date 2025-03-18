@@ -27,13 +27,6 @@ export default function VisualizarUsuario(){
             console.error('Error:', data)
         });
     }
-    const handleUserChange = ()=>{
-        if(username==null){
-            setUsername('1')
-        }
-        buscarUsuario()
-    }
-
     return (
         <div className="row form text-center text-white p-auto">
             <div className="row-1 col-12">
