@@ -1,13 +1,5 @@
-export function TablaUsuarios(data){
+export function TablaUsuarios(data,handleButton){
     let compos=``;
-    const handleButton= (username,tipo)=>{
-        if(tipo=="modificar"){
-
-        }
-        else if(tipo=="eliminar"){
-            
-        }
-    }
     const tablaData = (data)=>{
         let tablaHTML ='';
         for(const key in data){
@@ -29,8 +21,8 @@ export function TablaUsuarios(data){
                         <td>${valor.nombre}</td>
                         <td>${valor.apellido}</td>
                         <td>${valor.fechaNac}</td>
-                        <td><button id="${valor.username}" value="${valor.username}" type="button" class="align-self-end btn btn-info" onClick="handleButton(${valor.username},'modificar')">Modificar Usuario</button></td>
-                        <td><button id="${valor.nombre}" value="${valor.nombre}" type="button" class="align-self-end btn btn-info" onClick="handleButton(${valor.username},'eliminar')">Eliminar Usuario</button></td>
+                        <td><button id="${valor.username}" value="${valor.username}" type="button" class="align-self-end btn btn-info" onClick="${handleButton.toString()}">Modificar Usuario</button></td>
+                        <td><button id="${valor.nombre}" value="${valor.nombre}" type="button" class="align-self-end btn btn-info" onClick="${handleButton.toString()}">Eliminar Usuario</button></td>
                     </tr>`
             }
         }

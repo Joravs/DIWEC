@@ -5,6 +5,14 @@ import AltaUsuario from './AltaUsuario'
 
 export default function VisualizarUsuario(){
     const modalRef = useRef(null);
+    const handleButton= (username,tipo)=>{
+        if(tipo=="modificar"){
+
+        }
+        else if(tipo=="eliminar"){
+            
+        }
+    }
     const buscarUsuario = async()=>{
         const headers = {
             Accept: "application/json",
@@ -21,7 +29,7 @@ export default function VisualizarUsuario(){
             return response.json()
         })
         .then((data)=>{
-            TablaUsuarios(data)
+            TablaUsuarios(data,handleButton)
         })
         .catch((data) => {
             console.error('Error:', data)
