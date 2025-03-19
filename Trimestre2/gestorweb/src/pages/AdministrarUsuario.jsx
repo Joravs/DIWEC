@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import {expresionesContext} from '../functions/RegularExpressions';
 import { TablaUsuarios } from "./component/Tabla";
 
-export default function AdministrarUsuario(){
+export default function AdministrarUsuario({setValores}){
     const navigate = useNavigate();
     const [username1, setUsername1] = useState("");
     const [logun,setLogUn]= useState([]);
@@ -24,14 +24,14 @@ export default function AdministrarUsuario(){
             setError1(hasError1)
             setLogUn(logMessages1)
     }
-    const buscarUsuario = ()=>{
+    const buscarUsuario = async()=>{
         if(username1!=""){
             const headers = {
                 Accept: "application/json",
                 "Content-Type": "application/json",
             }
             const data = {username1}
-            fetch("http://localhost:8085/verUsuario.php", {
+            await fetch("http://localhost:8085/verUsuario.php", {
                 method: "POST",
                 headers: headers,
                 body: JSON.stringify(data),
@@ -43,7 +43,7 @@ export default function AdministrarUsuario(){
                 return response.json()
             })
             .then((data)=>{
-                TablaUsuarios(data)
+                setValores(data)
             })
             .catch((data) => {
                 console.error('Error:', data)
