@@ -1,7 +1,7 @@
 <?php    
     require_once './ctdb.php';
     header('Access-Control-Allow-Origin: *');
-    header('Access-Control-Allow-Method: GET,POST');
+    header('Access-Control-Allow-Method: POST');
     header('Access-Control-Allow-Headers: Content-Type');
     header('Content-Type: application/json');
 try{
