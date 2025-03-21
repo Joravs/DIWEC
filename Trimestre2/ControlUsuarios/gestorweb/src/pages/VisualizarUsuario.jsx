@@ -2,6 +2,7 @@ import {useRef,useState} from 'react'
 import { TablaUsuarios } from "./component/Tabla";
 import AdministrarUsuario from './AdministrarUsuario'
 import AltaUsuario from './AltaUsuario'
+import StatLenta from './StatLenta';
 
 export default function VisualizarUsuario(){
     const modalRef = useRef(null);
@@ -36,9 +37,8 @@ export default function VisualizarUsuario(){
             <div className="row-1 col-12">
                 <AdministrarUsuario setValores={setValores}/>
                 <div id="mostrarUsuario" className="d-flex justify-content-center fs-5 mb-5">
-                    <TablaUsuarios valores={valores}/>
-                </div>
-                
+                    <TablaUsuarios closeModal={() => modalRef.current?.classList.remove('show')} valores={valores}/>
+                </div>       
                 <div className="modal fade" id="modalId" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"aria-hidden="true">
                     <div className="modal-dialog modal-sm modal-fullscreen" role="document">
                         <div className="modal-content">
@@ -49,6 +49,7 @@ export default function VisualizarUsuario(){
                 <div className="row mx-auto col-8 gap-3">
                     <button type="button" className="mt-5 col-5 btn btn-info" onClick={buscarUsuario}>Mostrar Todos Usuarios</button>
                     <button type="button" className="mt-5 col-5 btn btn-info" data-bs-toggle="modal" data-bs-target="#modalId">Alta de Usuario</button>
+                    <StatLenta/>
                 </div>
             </div>
         </div>

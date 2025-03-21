@@ -1,7 +1,7 @@
 <?php    
 require_once './ctdb.php';
 header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Method: POST');
+header('Access-Control-Allow-Method: GET,POST');
 header('Access-Control-Allow-Headers: Content-Type');
 header('Content-Type: application/json');
 
@@ -22,7 +22,7 @@ try {
     $result = "";
 
     if ($username) {
-        $sentencia = 'UPDATE usuario SET nombre=?, apellido=?, fechaNac=?, password=?,  WHERE username = ?';
+        $sentencia = 'UPDATE usuario SET nombre=?, apellido=?, fechaNac=?, password=? WHERE username = ?';
 
         $stmt = $conn->prepare($sentencia);
         if (!$stmt) {
@@ -30,7 +30,6 @@ try {
         }
         $stmt->bind_param('sssss', $nombre,$apellido,$fechaNac, $password, $username);
         $stmt->execute();
-
         if ($stmt->affected_rows > 0) {
             $result = "Usuario Modificado Correctamente";
         } else {
